@@ -10,4 +10,7 @@
 
 @interface CoolGraphicsView : UIView
 
+// a number between 0-1 to fill our pie graph with
+@property (nonatomic, assign) CGFloat percentCompleted;
+
 @end

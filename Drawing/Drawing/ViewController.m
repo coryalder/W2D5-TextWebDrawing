@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.drawingView.percentCompleted = 0.0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,6 +31,14 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 
+//    [self.drawingView setNeedsDisplay];
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch* touch = [touches anyObject];
+    CGPoint touchLocation = [touch locationInView:self.drawingView];
+    self.drawingView.percentCompleted = touchLocation.x / self.drawingView.frame.size.width;
+    
     [self.drawingView setNeedsDisplay];
 }
 

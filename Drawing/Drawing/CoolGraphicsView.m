@@ -85,11 +85,11 @@
 //}
 
 
--(void)drawRect:(CGRect)rect{
-    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
-    [path stroke];
-
-}
+//-(void)drawRect:(CGRect)rect{
+//    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
+//    [path stroke];
+//
+//}
 
 //-(void)drawRect:(CGRect)rect{
 //
@@ -119,5 +119,23 @@
 //    
 //}
 
+
+-(void)drawRect:(CGRect)rect {
+    CGFloat radius = 100.0;
+    CGPoint start = (CGPoint){rect.size.width/2, rect.size.height/2};
+    CGFloat startAngle = 3 * M_PI_2;
+    CGFloat currentEndAngle = M_PI * 2 * self.percentCompleted + startAngle;
+    UIBezierPath* pie = [UIBezierPath new];
+    [pie moveToPoint:start];
+    [pie addLineToPoint:CGPointMake(start.x, start.y - radius)];
+    [pie addArcWithCenter:start
+                   radius:radius
+               startAngle:startAngle
+                 endAngle:currentEndAngle
+                clockwise:YES];
+    [pie closePath];
+    [[UIColor orangeColor] setFill];
+    [pie fill];
+}
 
 @end
